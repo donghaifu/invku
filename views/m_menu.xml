@@ -10,7 +10,7 @@
               action="purchase.product_normal_action_puchased"
     />
 
-    <menuitem id="menu_procurement_partner_contact_form"
+    <menuitem id="menu_m_product"
               name="零件"
               action="purchase.product_normal_action_puchased"
               parent="menu_m_technology"
