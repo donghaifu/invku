@@ -5,7 +5,7 @@
     <menuitem id="menu_m_technology"
               name="技术"
               icon="fa-wrench"
-              web_icon="ultra,static/description/technology.png"
+              web_icon="invku,static/description/technology.png"
               sequence="02"
               action="purchase.product_normal_action_puchased"
     />
