@@ -3,3 +3,5 @@ invku_sale_order_read,sale order read,sale.model_sale_order,base.group_jingying,
 invku_sale_order_line_read,sale order line read,sale.model_sale_order_line,base.group_jingying,1,0,0,0
 invku_purchase_order_read,purchase order read,purchase.model_purchase_order,base.group_jingying,1,0,0,0
 invku_purchase_order_line_read,purchase order line read,purchase.model_purchase_order_line,base.group_jingying,1,0,0,0
+invku_product_all,product all,product.model_product_product,base.group_chanpin,1,1,1,1
+invku_product_temp_all,product temp all,product.model_product_template,base.group_chanpin,1,1,1,1

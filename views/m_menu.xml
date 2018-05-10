@@ -7,19 +7,19 @@
               icon="fa-wrench"
               web_icon="invku,static/description/technology.png"
               sequence="02"
-              action="purchase.product_normal_action_puchased"
+              action="stock.product_template_action_product"
     />
 
     <menuitem id="menu_m_product"
-              name="零件"
+              name="产品"
               action="purchase.product_normal_action_puchased"
               parent="menu_m_technology"
               sequence="20"
     />
 
-    <menuitem name="财务"
+    <!--menuitem name="财务"
               id="account.menu_finance"
-      />
+      /-->
 
     <menuitem id="menu_m_all"
               name="综合"
@@ -27,50 +27,46 @@
               web_icon="invku,static/description/all.png"
               sequence="97"
 
-              groups="base.group_jingying,base.group_system"
+
     />
+<!-- groups="base.group_jinying,base.group_system"-->
 
     <menuitem id="menu_m_sale"
               name="销售"
               action="sale.action_orders"
               parent="menu_m_all"
               sequence="01"
-              groups="base.group_jingying,base.group_system"
     />
     <menuitem id="menu_m_purchase"
               name="采购"
               action="purchase.purchase_form_action"
               parent="menu_m_all"
               sequence="02"
-              groups="base.group_jingying,base.group_system"
     />
     <menuitem id="menu_m_stock"
               name="库存"
               action="purchase.product_normal_action_puchased"
               parent="menu_m_all"
               sequence="03"
-              groups="base.group_jingying,base.group_system"
     />
     <menuitem id="menu_m_account"
               name="财务"
               action="purchase.product_normal_action_puchased"
               parent="menu_m_all"
               sequence="04"
-              groups="base.group_jingying,base.group_system"
     />
     <menuitem id="menu_m_quality"
               name="质量"
               action="purchase.product_normal_action_puchased"
               parent="menu_m_all"
               sequence="05"
-              groups="base.group_jingying,base.group_system"
     />
     <!--下面这种写法不能把“讨论”菜单从所有人的使用中删除，只会添加一行给管理员用户。
         菜单和用户组是多对多的关系，存储在ir_ui_menu_group_rel里>
     <menuitem id="mail.mail_channel_menu_root_chat"
         groups="base.group_system"/-->
 
-    <!--正确写法-->
+    <!--正确写法>
     <record id="mail.mail_channel_menu_root_chat" model="ir.ui.menu">
             <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
     </record>
@@ -93,6 +89,6 @@
 
     <record id="purchase.menu_purchase_config" model="ir.ui.menu">
             <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
-    </record>
+    </record-->
 
 </odoo>

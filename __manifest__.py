@@ -20,7 +20,7 @@
     'installable': True,
     'auto_install': False,
     'data': [
-        'security/ir.model.access.csv',
+        #'security/ir.model.access.csv',
         #'security/m_erp_access_rules.xml',
         'views/m_view.xml',
         'views/m_menu.xml',
