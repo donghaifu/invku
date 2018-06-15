@@ -1,5 +1,47 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+    <!-- 使用扩展ID建立group免得安装报错 -->
+    <record id="base.group_jiage" model="res.groups">
+        <field name="name">YTOPrice</field>
+    </record>
+    <record id="base.group_jingying" model="res.groups">
+        <field name="name">YTOLeader</field>
+    </record>
+    <record id="base.group_chanpin" model="res.groups">
+        <field name="name">YTOMbom</field>
+    </record>
+    
+    <!--员工部分-->
+    <!-- 继承product.template视图，隐藏两个字段 -->
+    <record id="view_invku_product_tree_inherited" model="ir.ui.view">
+        <field name="name">product template inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="list_price" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="standard_price" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!--采购部分-->
+    <!-- 继承purchase.purchase_order_tree视图，添加负责人字段 -->
+    <record id="view_invku_purchase_order_tree_inherited" model="ir.ui.view">
+        <field name="name">purchase order inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="amount_total" position="after">
+                <field name="create_uid"/>
+            </field>
+        </field>
+    </record>
+
+
 
 
 </odoo>

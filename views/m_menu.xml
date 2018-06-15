@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
 
-        <!-- Menu item to open M_technology page     groups="base.group_no_one"-->
+    <!-- 技术部分 -->
+        <!-- 技术菜单，也就是产品视图。也是所有员工的查询入口     groups="base.group_no_one"-->
         <menuitem id="menu_m_technology"
               name="技术"
               icon="fa-wrench"
@@ -10,95 +11,124 @@
               action="stock.product_template_action_product"
         />
 
+        <!-- 把产品视图默认打开由kanban改成tree -->
+        <record id="stock.product_template_action_product" model="ir.actions.act_window">
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
+       <!-- 如果技术里面只有一个菜单,则这个菜单可以取消 >
         <menuitem id="menu_m_product"
               name="产品"
               action="purchase.product_normal_action_puchased"
               parent="menu_m_technology"
               sequence="20"
-        />
-
-        <!--menuitem name="财务"
-              id="account.menu_finance"
         /-->
 
-        <menuitem id="menu_m_all"
-              name="综合"
-              icon="fa-wrench"
-              web_icon="invku,static/description/all.png"
-              sequence="97"
-
-        />
-        <!--下面修改各看各的信息-->
+    <!-- 采购部分 -->
+        <!--采购只看供应商信息-->
         <record id="base.action_partner_supplier_form" model="ir.actions.act_window">
             <field name="domain">[('supplier','=',True)]</field>
         </record>
 
+    <!-- 销售部分 -->
+        <!--销售只看客户信息-->
         <!-- 这里面要注意这个action不是和supplier对应的action_partner_customer_form，而是action_partner_form"-->
         <!-- action_partner_customer_form有什么用处还不知道-->
         <record id="base.action_partner_form" model="ir.actions.act_window">
             <field name="domain">[('customer','=',True)]</field>
         </record>
 
-<!-- groups="base.group_jinying,base.group_system"-->
 
-    <!--menuitem id="menu_m_sale"
+    <!--财务部分-->
+        <!--menuitem name="财务"
+              id="account.menu_finance"
+              把会计改成财务,不用改代码,在开发者模式下,选择翻译->已翻译术语，搜索“翻译值：会计”，
+              找到“已翻译字段”为 ir.ui.menu,name，改第二个翻译值为财务。
+              退出登录，重新登录后菜单才能生效
+        /-->
+
+        <!--把财务日记账中默认使用杂项取消-->
+         <record id="account.action_move_journal_line" model="ir.actions.act_window">
+             <field name="context">{}</field>
+        </record>
+
+        <!--把库存移动页面挪到财务顾问菜单里-->
+        <menuitem name = "库存移动"  action="stock.stock_move_action" id="menu_action_stock_move" parent="account.menu_finance_entries" sequence="40"/>
+
+
+
+    <!-- 综合菜单是给领导看的 -->
+        <menuitem id="menu_m_all"
+              name="综合"
+              icon="fa-wrench"
+              web_icon="invku,static/description/all.png"
+              sequence="97"
+              groups="base.group_jingying,base.group_system"
+              action="sale.action_orders"
+        />
+
+        <menuitem id="menu_m_sale"
               name="销售"
               action="sale.action_orders"
               parent="menu_m_all"
               sequence="01"
-    />
-    <menuitem id="menu_m_purchase"
+        />
+        <menuitem id="menu_m_purchase"
               name="采购"
               action="purchase.purchase_form_action"
               parent="menu_m_all"
               sequence="02"
-    />
-    <menuitem id="menu_m_stock"
+        />
+        <!--menuitem id="menu_m_stock"
               name="库存"
               action="purchase.product_normal_action_puchased"
               parent="menu_m_all"
               sequence="03"
-    />
-    <menuitem id="menu_m_account"
+        />
+        <menuitem id="menu_m_account"
               name="财务"
               action="purchase.product_normal_action_puchased"
               parent="menu_m_all"
               sequence="04"
-    />
-    <menuitem id="menu_m_quality"
+        />
+        <menuitem id="menu_m_quality"
               name="质量"
               action="purchase.product_normal_action_puchased"
               parent="menu_m_all"
               sequence="05"
-    /-->
-    <!--下面这种写法不能把“讨论”菜单从所有人的使用中删除，只会添加一行给管理员用户。
+        /-->
+
+
+    <!--隐藏财务，质量，库房，销售和采购的配置页面-->
+        <!--下面这种写法不能把“讨论”菜单从所有人的使用中删除，只会添加一行给管理员用户。
         菜单和用户组是多对多的关系，存储在ir_ui_menu_group_rel里>
-    <menuitem id="mail.mail_channel_menu_root_chat"
-        groups="base.group_system"/-->
+        <menuitem id="mail.mail_channel_menu_root_chat" groups="base.group_system"/-->
 
-    <!--正确写法>
-    <record id="mail.mail_channel_menu_root_chat" model="ir.ui.menu">
+        <!--正确写法，但是最后使用hide_inbox模块来隐藏>
+        <record id="mail.mail_channel_menu_root_chat" model="ir.ui.menu">
             <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
-    </record>
+        </record-->
 
-    <record id="account.menu_finance_configuration" model="ir.ui.menu">
+        <record id="account.menu_finance_configuration" model="ir.ui.menu">
             <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
-    </record>
+        </record>
+        <record id="quality.menu_quality_configuration" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
+        <record id="stock.menu_stock_config_settings" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
+        <record id="sales_team.menu_sale_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
+        <record id="purchase.menu_purchase_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
 
-    <record id="quality.menu_quality_configuration" model="ir.ui.menu">
+    <!--隐藏制造的根目录-->
+        <record id="mrp.menu_mrp_root" model="ir.ui.menu">
             <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
-    </record>
+        </record>
 
-    <record id="stock.menu_stock_config_settings" model="ir.ui.menu">
-            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
-    </record>
-
-    <record id="sales_team.menu_sale_config" model="ir.ui.menu">
-            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
-    </record>
-
-    <record id="purchase.menu_purchase_config" model="ir.ui.menu">
-            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
-    </record-->
 
 </odoo>
