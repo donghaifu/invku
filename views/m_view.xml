@@ -13,18 +13,57 @@
     </record>
     
     <!--员工部分-->
-    <!-- 继承product.template视图，隐藏两个字段 -->
+    <!-- 继承product.template tree 视图，增加描述（中文名），隐藏两个字段 -->
     <record id="view_invku_product_tree_inherited" model="ir.ui.view">
         <field name="name">product template inherit</field>
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_tree_view"/>
         <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="description"/>
+            </field>
+
             <field name="list_price" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="standard_price" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
+
+        </field>
+    </record>
+
+    <!--有权限看到产品form页面的-->
+    <!-- 继承product.template from 视图，隐藏图片 -->
+    <record id="view_invku_product_from_inherited" model="ir.ui.view">
+        <field name="name">product template inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="description"/>
+            </field>
+            <field name="image_medium" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+  <!-- 继承product.template from 视图，隐藏在手数量,重订货规则和预测按钮 -->
+    <record id="view_invku_product_from_button_inherited" model="ir.ui.view">
+        <field name="name">product template button inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_open_quants']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_view_orderpoints']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(stock.action_stock_level_forecast_report_template)d']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
         </field>
     </record>
 

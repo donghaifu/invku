@@ -130,5 +130,24 @@
             <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
         </record>
 
+    <!--隐藏销售的超售订单-->
+        <record id="sale.menu_sale_order_upselling" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
+
+    <!--隐藏库存的重订货规则-->
+        <record id="stock.menu_reordering_rules_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
+
+    <!--隐藏库存的运行重订货规则-->
+        <record id="stock.menu_procurement_compute" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
+
+    <!--隐藏库存的运行调度-->
+        <record id="stock.menu_stock_proc_schedulers" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
 
 </odoo>

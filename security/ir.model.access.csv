@@ -48,6 +48,7 @@ invku_purchase_order_line_read,purchase order line read,purchase.model_purchase_
 
 invku_product_all,product all,product.model_product_product,base.group_chanpin,1,1,1,0
 invku_product_temp_all,product temp all,product.model_product_template,base.group_chanpin,1,1,1,0
+invku_product_enter,product enter,stock.model_stock_warehouse_orderpoint,base.group_chanpin,1,1,1,0
 
 quality.access_quality_check_stock_user,quality.check,quality.model_quality_check,stock.group_stock_user,1,1,1,0
 
