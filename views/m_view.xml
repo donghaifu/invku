@@ -13,7 +13,7 @@
     </record>
     
     <!--员工部分-->
-    <!-- 继承product.template tree 视图，增加描述（中文名），隐藏两个字段 -->
+    <!-- 继承product.template tree 视图，增加描述（中文名），隐藏三个字段 -->
     <record id="view_invku_product_tree_inherited" model="ir.ui.view">
         <field name="name">product template inherit</field>
         <field name="model">product.template</field>
@@ -23,6 +23,9 @@
                 <field name="description"/>
             </field>
 
+            <field name="default_code" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
             <field name="list_price" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
@@ -49,12 +52,20 @@
         </field>
     </record>
 
-  <!-- 继承product.template from 视图，隐藏在手数量,重订货规则和预测按钮 -->
+  <!-- 继承product.template from 视图，隐藏两个按钮:更新在手数量,补货规则
+    三个智能按钮:在手数量,重订货规则和预测按钮 -->
     <record id="view_invku_product_from_button_inherited" model="ir.ui.view">
         <field name="name">product template button inherit</field>
         <field name="model">product.template</field>
         <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
         <field name="arch" type="xml">
+            <xpath expr="//button[@name='%(stock.action_view_change_product_quantity)d']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(stock.act_make_procurement)d']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
             <xpath expr="//button[@name='action_open_quants']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>

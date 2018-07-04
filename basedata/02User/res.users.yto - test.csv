@@ -1,5 +1,6 @@
-id,name,login,lang,tz,notify_email,email,customer
-base.user_JY001,唐占龙,tangzhanlong,zh_CN,Asia/Shanghai,none,tangzhanlong@yto.com,FALSE
+id,name,login,lang,tz,notify_email,email,customer,groups_id/id
+base.user_JY001,唐占龙,tangzhanlong,zh_CN,Asia/Shanghai,none,tangzhanlong@yto.com,FALSE,base.group_user
+,,,,,,,,base.group_jingying
 base.user_CW001,张艺玮,zhangyiwei,zh_CN,Asia/Shanghai,none,zhangyiwei@yto.com,FALSE
 base.user_CW002,常靓,changliang,zh_CN,Asia/Shanghai,none,changliang@yto.com,FALSE
 base.user_CW003,张依坚,zhangyijian,zh_CN,Asia/Shanghai,none,zhangyijian@yto.com,FALSE

@@ -23,7 +23,7 @@ purchase.access_product_template_purchase_manager,product.template purchase_mana
 
 stock.access_product_supplierinfo_stock_manager,product.supplierinfo stock_manager,product.model_product_supplierinfo,stock.group_stock_manager,1,0,0,0
 sale.access_product_supplierinfo_sale_manager,product.supplierinfo salemanager,product.model_product_supplierinfo,sales_team.group_sale_manager,1,0,0,0
-purchase.access_product_supplierinfo_purchase_manager,product.supplierinfo purchase_manager,product.model_product_supplierinfo,purchase.group_purchase_manager,1,1,1,0
+purchase.access_product_supplierinfo_purchase_manager,product.supplierinfo purchase_manager,product.model_product_supplierinfo,purchase.group_purchase_manager,1,0,0,0
 mrp.access_product_supplierinfo_user,product.supplierinfo user,product.model_product_supplierinfo,mrp.group_mrp_user,1,0,0,0
 
 stock.access_product_uom_categ_stock_manager,product.uom.categ stock_manager,product.model_product_uom_categ,stock.group_stock_manager,1,0,0,0
