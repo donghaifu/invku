@@ -37,15 +37,22 @@
     </record>
 
     <!--有权限看到产品form页面的-->
-    <!-- 继承product.template from 视图，隐藏图片 -->
+    <!-- 继承product.template from 视图，name字体改小一点,隐藏图片 -->
     <record id="view_invku_product_from_inherited" model="ir.ui.view">
         <field name="name">product template inherit</field>
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="style">font-size:25px;width:220%</attribute>
+            </field>
             <field name="name" position="after">
                 <field name="description"/>
             </field>
+            <field name="description" position="attributes">
+                <attribute name="style">font-size:20px;width:220%</attribute>
+            </field>
+
             <field name="image_medium" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
