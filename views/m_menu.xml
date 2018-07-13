@@ -54,8 +54,8 @@
 
         <!--把库存移动页面挪到财务顾问菜单里-->
         <menuitem name = "库存移动"  action="stock.stock_move_action" id="menu_action_stock_move" parent="account.menu_finance_entries" sequence="40"/>
-
-
+        <!--把财务的收付款挪到采购菜单里，在模型account.model_account_payment上还需要开放采购用户的权限-->
+        <menuitem name= "收付款" action="account.action_account_payments_payable" id="menu_action_account_payments_payable" parent="purchase.menu_purchase_control" sequence="40" />
 
     <!-- 综合菜单是给领导看的 -->
         <menuitem id="menu_m_all"

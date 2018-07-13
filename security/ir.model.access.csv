@@ -52,4 +52,6 @@ invku_product_enter,product enter,stock.model_stock_warehouse_orderpoint,base.gr
 
 quality.access_quality_check_stock_user,quality.check,quality.model_quality_check,stock.group_stock_user,1,1,1,0
 
+invku_access_account_payment,account payment purchase,account.model_account_payment,purchase.group_purchase_user,1,0,0,0
+
 
