@@ -158,4 +158,14 @@
             <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
         </record>
 
+        <!--隐藏质量的 质量管理-警报-->
+        <record id="quality.menu_quality_alerts" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
+
+        <!--隐藏质量的 报告-质量警报-->
+        <record id="quality.menu_quality_alert_report" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6,0,[ref('base.group_no_one')])]"/>
+        </record>
+
 </odoo>
